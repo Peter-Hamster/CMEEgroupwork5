@@ -1,0 +1,11 @@
+#1 count lines of all fasta files within the directory
+wc -l *.fasta
+
+#2 Show output starting from the second line of the E.coli sequence
+tail -n +2 E.coli.fasta 
+
+#3 Show output starting from the second line of the E.coli sequence and count the number of characters 
+tail -n +2 E.coli.fasta | wc -m
+
+#4 Count the matches of a particular sequence, “ATGC” in the genome of E. coli (hint: Start by removing the first line and removing newline characters)
+tail -n +2 E.coli.fasta | grep ATGC E.coli.fasta

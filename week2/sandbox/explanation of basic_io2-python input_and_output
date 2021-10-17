@@ -1,0 +1,23 @@
+#############################
+# FILE OUTPUT
+#############################
+# Save the elements of a list to a file
+
+#creates a variale (list to save) which is a list of numbers from 0-99
+list_to_save = range(100) 
+
+#defines the "testout" file as f and allows to be written in (w) 
+#f is variable- set as the testout file in the sandbox dir which can be modified
+f = open('../sandbox/testout.txt','w')
+
+#string (I) redfine intergers as string in the "list to save" file. i is inividiual numbers in the list . f.write part newly defined list into "f"
+for i in list_to_save:
+    f.write(str(i) + '\n') ## Add a new line at the end
+
+f.close()
+
+- all this turns a list of numbers (1,2,3,etc) into a verticle list (text file called "testout") whereby the number values are defined as string
+
+index  number
+0        0
+1        1
