@@ -2,16 +2,17 @@
 # Author: Kate Griffin kate.griffin21@imperial.ac.uk
 # Script: shell scripting practical shell script
 # Desc: a new shell script
-# Arguments: none
+# Arguments: two
 # Date: Oct 2021
 
-# Gives error message ("argument not filled") if the right number of inputs (1) is not given
+# Gives error message ("argument not filled") if the right number of inputs  is not given (file to modify)
 if [ -z $1 ];
 then 
 echo "argument 1 not filled"
 exit
 fi
 
+# Gives error message ("argument not filled") if the right number of inputs is not given (name of new file)
 if [ -z $2 ];
 then 
 echo "argument 2 not filled"

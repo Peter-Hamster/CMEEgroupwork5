@@ -13,4 +13,4 @@ evince $filename.pdf &
 rm *.aux
 rm *.log
 rm *.bbl
-rm *.blg
+rm *.blg()
