@@ -1,0 +1,34 @@
+ -----
+ code:
+ -----
+ AT=$(tail -n +2 E.coli.fasta | grep -o "A\|T"| wc -w) && GC=$(tail -n +2 E.coli.fasta | grep -o "C\|G" | wc -w) && echo "scale=4; $AT/$GC" | bc -l
+
+
+------------
+rough notes:
+-------------
+
+# 5 COUNT all the (a and ts) and count all the (g and cs) and divide these two numbers
+
+
+Define AT as a variable (all of the As and Ts within the E.coli genome after the second line) 
+define GC as a variable (all of the Gs and Cs within the E.coli genome after the second line)
+
+grep identifies a pattern (A or T and G and C) wc - c= counts the number of "A or Ts" and "G and Cs"
+
+the cmmd1 && cmm2 - this allows multiple commands to be run in an order whereby if cmmd1 works, cmm2 will run after. If cmm1 doesnt work then cmmd2 wont run. In this case it allows both "AT" and "GC" to be calculated seperately and then finally divides "AT" by "GC".
+$= telling your compter its a variavle 
+
+--------------------
+detailed explanation 
+--------------------
+# Define "AT" as a variable, which is defined as all of the As and Ts ("A\|T") within the E.coli genome after the second line (tail -n +2). wc -w command counts all A and T values to give a numerical answer.
+# Define "GC" as a variable , which is defined as all of the Gs and Cs ("G\|C") within the E.coli genome after the second line (tail -n +2). wc -w command counts all A and T values to give a numerical answer.
+# $ defines object as a variable
+# ; Allows multiple commands to be run in a set order
+# && allows multiple commands to be run in a set order, whereby the proceeding command will only run only if the previous command sucessfully runs (i.e. command 2 will only run if command 1 works)
+# echo $AT/$GC - prints variable "AT" divided by variable "GC"
+# scale value to 4 decmil places
+# bc: bash calculator allows for basic calcuations in bash, -l: define the standard math library
+
+ 
