@@ -27,29 +27,30 @@ taxa = [ ('Myotis lucifugus','Chiroptera'),
 Rodentia= []
 for i in taxa:
     if i[1] == "Rodentia":
-            print(i)
-            Rodentia.append(i[0])
+        print(i)
+        Rodentia.append(i[0])
 
 # Create a list of "Chiroptera" species
 Chiroptera= []
 for i in taxa:
     if i[1] == "Chiroptera":
-            print(i)
-            Chiroptera.append(i[0])
+        print(i)
+        Chiroptera.append(i[0])
 
 # Create a list of "Afrosoricida" species
 Afrosoricida= []
 for i in taxa:
     if i[1] == "Afrosoricida":
-            print(i)
-            Afrosoricida.append(i[0])
+        print(i)
+        Afrosoricida.append(i[0])
 
 # Create a list of "Carnivora" species
 Carnivora= []
 for i in taxa:
     if i[1] == "Carnivora":
-            print(i)
-            Carnivora.append(i[0])
+        print(i)
+        Carnivora.append(i[0])
 
 # Create a dictionary of orders with a list of species (created in previous for loops)
 Orders_and_species = {"Carnivora":Carnivora, "Afrosoricida": Afrosoricida, "Chiroptera":Chiroptera, "Rodentia":Rodentia}
+print(Orders_and_species)
