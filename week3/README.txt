@@ -17,7 +17,7 @@ Project name / title: Week 3 CMEE Coursework
     - PP_Regress.R: Makes a linear model which measures the rerlationship between prey mass and predator mass based on feeding types and lifestage. Produces a .csv file with results of linear regression analysis and a .pdf file containing a graph made in ggplot, based off the one provided in the Data Visualisation notes
     - GPDD_Data.R: Script which produces a world map with sampling points based on GPDD data
     3. Data Visualisation notes:
-    - Girko.K: Self sufficient script which runs Girko's Law simulation. This simulation calculates ellipse and plots on a graph.
+    - Girko.R: Self sufficient script which runs Girko's Law simulation. This simulation calculates ellipse and plots on a graph.
     - MyBars.R: Self sufficient script which runs a function that creates a bar chart.
     - plotLin.R: Self sufficient script which annotates a linear regression plot.
     4. R notes:
@@ -32,7 +32,6 @@ Project name / title: Week 3 CMEE Coursework
     - sample.R: An example of vectorization involving lapply and sapply
     - browse.R: Debugging with browser function
     - try.R: illustrates try
-    
 
     Author name and contact: Kate Griffin, kate.griffin21@imperial.ac.uk
 

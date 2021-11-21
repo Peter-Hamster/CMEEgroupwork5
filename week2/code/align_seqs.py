@@ -25,7 +25,6 @@ def read_csv ():
     seq1 = temp[0][0] #select actual value with both [][]
     seq2 = temp[1][0]
     return(seq1, seq2)
-    
 
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
