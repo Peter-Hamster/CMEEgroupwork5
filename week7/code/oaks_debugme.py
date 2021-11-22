@@ -26,13 +26,10 @@ def is_an_oak(name):
     False
 
     >>> is_an_oak('Quercuss robur')
-    True
-
-    >>> is_an_oak('Quercuss cerris')
-    True
+    False
 
     """
-    return name.lower().startswith('quercus')
+    return name.lower().startswith('quercus ', 0, 8)
 
 def main(argv): 
     """ Reads csv file and copies enteries which belong to the genus "quercus" into a new csv file"""
