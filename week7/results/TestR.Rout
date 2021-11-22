@@ -1,1 +1,1 @@
-Fatal error: cannot open file 'TestR.R': No such file or directory
+[1] "Hello, this is R!"
