@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: writeup.aux
+The style file: plain.bst
+Database file #1: FirstBiblio.bib
+Repeated entry---line 93 of file FirstBiblio.bib
+ : @article{transtrum2016bridging
+ :                               ,
+I'm skipping whatever remains of this entry
+You've used 8 entries,
+            2118 wiz_defined-function locations,
+            561 strings with 5709 characters,
+and the built_in function-call counts, 3115 in all, are:
+= -- 302
+> -- 172
+< -- 0
++ -- 68
+- -- 60
+* -- 271
+:= -- 535
+add.period$ -- 24
+call.type$ -- 8
+change.case$ -- 53
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 88
+empty$ -- 221
+format.name$ -- 60
+if$ -- 615
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 43
+num.names$ -- 16
+pop$ -- 37
+preamble$ -- 1
+purify$ -- 45
+quote$ -- 0
+skip$ -- 59
+stack$ -- 0
+substring$ -- 244
+swap$ -- 8
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 32
+warning$ -- 0
+while$ -- 30
+width$ -- 9
+write$ -- 90
+(There was 1 error message)

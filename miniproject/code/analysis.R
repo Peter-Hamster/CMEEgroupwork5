@@ -42,7 +42,7 @@ for (i in 1:length(df$ID)){ # for i in each row
 
 # Create a tally which counts all the best models for each comparison
 #####################################################################
-count_AIC <- count(df, AIC_selected)
+count_AIC <- count(df, "AIC_selected")
 
 # Comparing quadratic BIC to logistic BIC
 #########################################
@@ -73,7 +73,7 @@ for (i in 1:length(df$ID)){ # for i in each row
 
 # Create a tally which counts all the best models for each comparison
 #####################################################################
-count_BIC <- count(df, BIC_selected)
+count_BIC <- count(df, "BIC_selected")
 
 # make a df with the results 
 test <- c("AIC", "AIC", "AIC", "BIC", "BIC", "BIC")
@@ -107,7 +107,7 @@ for (i in 1:length(unique(df_original$ID))){ # loop through unique IDs
   
   # Quadratic
   test <-
-    ggplot(subs, aes(x = (Time), y = (PopBio))) +
+    ggplot(subs, aes(x = (Time), y = PopBio)) +
     geom_point(shape=I(1)) + # sets points to 
     theme_bw() + # make the background white
     labs(x= "Time (hours)", y="Population size") + # add labels 
@@ -117,20 +117,20 @@ for (i in 1:length(unique(df_original$ID))){ # loop through unique IDs
                 formula = y ~ poly(x,2), se = TRUE, fullrange = TRUE,
                 level = 0.95, na.rm = FALSE) +
   ggtitle(paste0("ID=",i))
-  
+
   # Add logistic
   timepoints <- seq(0, max(length(subs), 0.1))
   
-  logistic_points <- logistic_model(t = timepoints,
+  logistic_points <- logistic_model(t = subs$Time,
                                    r_max = df$r_max[i],
                                    K = df$r_max[i],
-                                   N_0 = df$N_0)
+                                   N_0 = df$N_0[i])
   # Fit model
-  fit_logistic <- try(nlsLM(PopBio ~ logistic_model(t = timepoints, r_max = subs$r_max[i], K = subs$K[i], N_0 = subs$N_0[i])), silent = T)
+#  fit_logistic <- try(nlsLM(PopBio ~ logistic_model(t = seq(0, max(length(subs), 0.1)), r_max = r_max[i], K = K[i], N_0 = N_0[i]), subs), silent = T)
+                  #try(nlsLM(PopBio ~ logistic_model(t = Time, r_max, K, N_0), subs, list(r_max=r_max_start, N_0 = N_0_start, K = K_start)),silent = T)
+  test <- test + geom_line(aes(x = subs$Time, y = logistic_points), size = 1) 
   
-  test <- test + geom_line(data = subs, aes(x = Time, y = N, col = model), size = 1) 
-  
- ggsave(test, file=paste0("../results/plot", i, "pdf"), width = 10, height=10)
+  ggsave(test, file=paste0("../results/plot", i, ".pdf"), width = 10, height=10)
 
 }
 

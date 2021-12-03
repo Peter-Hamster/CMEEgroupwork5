@@ -38,7 +38,7 @@ library(plyr)
 # dlply Makes a list (lm_results) from a dataframe (MyDF)
 # Mesures the relationship between prey and predator mass based off of types of feeding interation and predator lifestage
 # predator.mass (x) ~ Prey.mass (y): x is predicted by y
-lm_results<- dlply(MyDF,.(Type.of.feeding.interaction, Predator.lifestage), function(x) lm(Predator.mass~Prey.mass, data = MyDF))
+lm_results<- dlply(MyDF,.(Type.of.feeding.interaction, Predator.lifestage), function(x) lm(Predator.mass~Prey.mass, data = x)) 
 
 #notes on how to find the right index values for r^2, p.value, slope, intercept, f-statistic
 ###########################################################

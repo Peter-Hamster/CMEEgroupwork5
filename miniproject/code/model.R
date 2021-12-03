@@ -37,6 +37,10 @@ logistic_model <- function(t, r_max, K, N_0){ # The classic logistic equation
   return(N_0 * K * exp(r_max * t)/(K + N_0 * (exp(r_max * t) - 1)))
 }
 
+
+# check to see if equation is right 
+# fitting script- look to see when the coeffs are produced, if logistic equation is plotted using coefficients  
+
 # Create empty lists
 AIC_logistic <- c()
 BIC_logistic <- c()

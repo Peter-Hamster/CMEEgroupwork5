@@ -4,7 +4,7 @@ Project name / title: Mini project
 
     Languages: Python, R, Bash, LaTeX.
     
-    Dependencies: Pandas, ggplot2, dplyr, minpack.lm.
+    Dependencies: Pandas, numpy, ggplot2, dplyr, minpack.lm.
 
 
     Project structure and Usage: 
