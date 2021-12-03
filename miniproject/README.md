@@ -16,6 +16,8 @@ Project name / title: Mini project
     
     4. wrtieup.tex: A .tex file which produces a .pdf of the written report of my analysis
     
+    5. MyFirstBiblo: references for writeup.tex
+    
 
 
     Author name and contact: Kate Griffin, kate.griffin21@imperial.ac.uk
