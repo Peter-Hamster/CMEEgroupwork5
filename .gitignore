@@ -15,4 +15,7 @@ miniproject/code/writeup.log
 miniproject/code/writeup.pdf
 miniproject/code/writeup.synctex.gz
 miniproject/code/writeup.toc
+*.rda
+*.tgz
+week10/sandbox
 
