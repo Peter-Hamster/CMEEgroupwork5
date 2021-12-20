@@ -310,10 +310,17 @@ process_cluster_results <- function()  {
   # Loop through .rda files where size = 500 (no. 1 to 25 of all keg121_x.rda files)
   for (i in 1:25){
     load(paste0("keg121_", i, ".rda"))
-    for(i in 80:length(Oct_vec)){ # loop though each octave vector ... 80: size*8/(size/10)
+    # for(i in 80:length(Oct_vec)){ # loop though each octave vector ... 80: size*8/(size/10)
+    # for(i in size*8:length(Oct_vec)){ # edit*
+    starti <- min(length(Oct_vec)-1, size*8) 
+    for(i in starti :length(Oct_vec)){
+        
       sum <- sum_vect(sum, Oct_vec[[i]]) # adds octaves together and adds to "sum"
     }
-   den <- sum(den, (length(Oct_vec) - 79)) # calculate running total for denominator
+   #den <- sum(den, (length(Oct_vec) - 79)) # calculate running total for denominator
+   # den <- sum(den, (length(Oct_vec) - (size*8)-1)) # edit*
+   den <- sum(den, (length(Oct_vec) - starti - 1))
+   
      }
 
   mean500 = sum/den # calculates the mean by dividing sum by the length of the octave
@@ -321,31 +328,38 @@ process_cluster_results <- function()  {
   #... Size = 1000
   for (i in 26:50){
     load(paste0("keg121_", i, ".rda"))
-    for(i in 80:length(Oct_vec)){ # loop though each octave vector ... 80: size*8/(size/10) -> interval_oct = size/10 & burn_in_generations = 8*size
+    
+    starti <- min(length(Oct_vec)-1, size*8) 
+    for(i in starti :length(Oct_vec)){
       sum <- sum_vect(sum, Oct_vec[[i]]) # adds octaves together and adds to "sum"
     }
-    den <- sum(den, (length(Oct_vec) - 79)) # calculate running total for denominator. (note: 79: 80- 1: counts first interval but only counts after burn in period.. as count starts after 80)
-    
+   
+    den <- sum(den, (length(Oct_vec) - starti - 1))
   }
   mean1000 = sum/den # calculates mean
   
   # ... Size = 2500
   for (i in 51:75){
     load(paste0("keg121_", i, ".rda"))
-    for(i in 80:length(Oct_vec)){ # loop though each octave vector ... 80: size*8/(size/10) -> interval_oct = size/10 & burn_in_generations = 8*size
+
+    starti <- min(length(Oct_vec)-1, size*8) 
+    for(i in starti :length(Oct_vec)){
       sum <- sum_vect(sum, Oct_vec[[i]]) # adds octaves together and adds to "sum"
     }
-    den <- sum(den, (length(Oct_vec) - 79)) # calculate running total for denominator 
+    den <- sum(den, (length(Oct_vec) - starti - 1))
   }
   mean2500 = sum/den # calculates mean 
   
   # ... Size = 5000
   for (i in 76:100){
     load(paste0("keg121_", i, ".rda"))
-    for(i in 80:length(Oct_vec)){ # loop though each octave vector ... 80: size*8/(size/10) -> interval_oct = size/10 & burn_in_generations = 8*size
+
+    starti <- min(length(Oct_vec)-1, size*8) 
+    for(i in starti :length(Oct_vec)){
       sum <- sum_vect(sum, Oct_vec[[i]]) # adds octaves together and adds to "sum"
     }
-    den <- sum(den, (length(Oct_vec) - 79)) # 
+    den <- sum(den, (length(Oct_vec) - starti - 1))
+    
     
   }
   mean5000 = sum/den  # calculates mean
@@ -365,17 +379,17 @@ plot_cluster_results <- function()  {
     load("question_20_combined_means.rda")
   
   
-  size_500 <- c(combined_results[[1]], 0, 0, 0, 0)
-  size_1000 <-c(combined_results[[2]], 0, 0, 0)
-  size_2500 <- c(combined_results[[3]], 0)
-  size_5000 <- combined_results[[4]]
+  size_500 <- c(combined_results[[1]])
+  size_1000 <-c(combined_results[[2]])
+  size_2500 <- c(combined_results[[3]])
+  size_5000 <- c(combined_results[[4]])
  
    # plot the graphs
   par(mfrow=c(2,2))
   size_500_plot <- barplot(size_500, main = "Size = 500", ylab = "Mean species abundance", ylim = c(0, 3.5), col = rgb(1,0,0.5,0.5)) 
   size_1000_plot <- barplot(size_1000, main = "Size = 1000", ylab = "Mean species abundance", ylim= c(0, 5), col = rgb(0.3,0,1,0.4))
   size_2500_plot <- barplot(size_2500, main= "Size = 2500", ylab = "Mean species abundance", ylim = c(0, 8), col = rgb(0,0.3,1,0.5))
-  size_5000_plot <- barplot(size_2500, main= "Size = 2500", ylab = "Mean species abundance", ylim = c(0, 8), col = "khaki1")
+  size_5000_plot <- barplot(size_5000, main= "Size = 5000", ylab = "Mean species abundance", ylim = c(0, 10), col = "khaki1")
   mtext("Results for each simulation size", side=1, outer=TRUE, line=-1.2) 
 
       return(combined_results)
@@ -591,7 +605,7 @@ fern2 <- function(start_position, direction, length, dir)  {
 
 draw_fern2 <- function()  {
   plot(0, type= 'n', xlim = c(-4,4), ylim = c(-1,8)) # plot for test
-  fern2(c(0,0), direction = pi/2, length = 1, dir = 1)
+  fern2(c(0,0), direction = pi/2, length = 1, dir = -1)
   
   # clear any existing graphs and plot your graph within the R window
 

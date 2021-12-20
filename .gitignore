@@ -18,4 +18,5 @@ miniproject/code/writeup.toc
 *.rda
 *.tgz
 week10/sandbox
-
+*.zip
+week10/keg121/outputs
