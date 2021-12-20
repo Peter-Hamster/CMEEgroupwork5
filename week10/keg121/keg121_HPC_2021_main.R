@@ -386,9 +386,9 @@ plot_cluster_results <- function()  {
  
    # plot the graphs
   par(mfrow=c(2,2))
-  size_500_plot <- barplot(size_500, main = "Size = 500", ylab = "Mean species abundance", ylim = c(0, 3.5), col = rgb(1,0,0.5,0.5)) 
-  size_1000_plot <- barplot(size_1000, main = "Size = 1000", ylab = "Mean species abundance", ylim= c(0, 5), col = rgb(0.3,0,1,0.4))
-  size_2500_plot <- barplot(size_2500, main= "Size = 2500", ylab = "Mean species abundance", ylim = c(0, 8), col = rgb(0,0.3,1,0.5))
+  size_500_plot <- barplot(size_500, main = "Size = 500", ylab = "Mean species abundance", ylim = c(0, 10), col = rgb(1,0,0.5,0.5)) 
+  size_1000_plot <- barplot(size_1000, main = "Size = 1000", ylab = "Mean species abundance", ylim= c(0, 10), col = rgb(0.3,0,1,0.4))
+  size_2500_plot <- barplot(size_2500, main= "Size = 2500", ylab = "Mean species abundance", ylim = c(0, 10), col = rgb(0,0.3,1,0.5))
   size_5000_plot <- barplot(size_5000, main= "Size = 5000", ylab = "Mean species abundance", ylim = c(0, 10), col = "khaki1")
   mtext("Results for each simulation size", side=1, outer=TRUE, line=-1.2) 
 
