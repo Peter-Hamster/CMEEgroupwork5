@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import csv
 import sys
 import doctest
@@ -26,18 +28,21 @@ def is_an_oak(name):
     False
 
     >>> is_an_oak('Quercuss robur')
-    False
+    True
 
     """
-    return name.lower().startswith('quercus ', 0, 8)
+
+    return name.lower().startswith('quercus') # numbers are the start and end parameters (i.e., first to 9th character is "quercus")
 
 def main(argv): 
     """ Reads csv file and copies enteries which belong to the genus "quercus" into a new csv file"""
     # import ipdb; ipdb.set_trace()
     f = open('../data/TestOaksData.csv','r')
+    next(f)
     g = open('../data/JustOaksData.csv','w')
     taxa = csv.reader(f)
     csvwrite = csv.writer(g)
+    csvwrite.writerow(["Genus", "Species"])
     oaks = set()
     for row in taxa:
         # import ipdb; ipdb.set_trace()
@@ -54,4 +59,4 @@ def main(argv):
 if (__name__ == "__main__"):
     status = main(sys.argv)
 
-    doctest.testmod()
+doctest.testmod()
