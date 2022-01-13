@@ -1,0 +1,33 @@
+\documentclass[8pt]{article}
+
+\title{Is Florida getting warmer?}
+\author{Peter Zeng}
+\date{Nov 2021}
+
+\begin{document}
+    \maketitle
+
+    \section{Introduction}
+        The goal is to answer the question: Are temperatures of one year significantly correlated with the successive year, across years in a given location? 
+        In other words, we need to calculate the correlation coefficients between pairs of years
+        However, the standard p-value cannot be used to calculate a correlation coefficient, because
+        measurements of climatic variables in successive time-points in a time series (successive seconds, minutes, hours, months, years, etc.)
+        are not independent. 
+        
+        In this case, we will use a permutation analysis instead, by generating a distribution of random correlation coefficients, 
+        and compare the observed coefficient with this random distribution.
+    
+    \section{Methods}
+        To find out if the correlation is significant or not, we calculate the correlation coefficient between successive years and Temperature. 
+        After we get the correlation coefficient, we randomly permuting the time series 10000 times, and then recalculating the correlation
+        coefficient for each randomly permuted year sequence and storing it. 
+
+        Then we calculate what fraction of the correlation coefficients from the previous step were greater than that from the origin correlation 
+        coefficient, and this will be my approximate p-value
+
+    \section{Results}
+        The correlation coefficient between temperatures and years is 0.3261, and the fraction of the correlation coefficients which   
+        were greater than the origin correlation coefficient is 1e-04, which is our p-value. In this case, we can say that there is a statistically signigcant correlation 
+        between years and temperation, in other words, temperatures are significantly correlated with years.
+
+\end{document}
