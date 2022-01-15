@@ -1,6 +1,4 @@
-"""oaks_debugme.py is a python script. This script aligns two DNA sequences and saves the best alignment 
-along with its corresponding score in a single text file, and no external input should be required. 
-The name of input file has been set"""
+"""oaks_debugme.py is a python script. This script is aimed to find out the oak in the list of species"""
 
 __appname__ = 'oaks_debugme.py'
 __author__ = 'Peter Zeng (Email: pz221@ic.ac.uk)'
