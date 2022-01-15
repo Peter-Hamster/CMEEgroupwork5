@@ -20,13 +20,14 @@ Email: pz221@ic.ac.uk
 
 # Project structure and Usage
 ## Biological Computing in Python I
-### align_seqs_better.py
-
-align_seqs.py is a python script. This script aligns two DNA sequences and saves the best alignment along with its corresponding score in a single text file, and no external input should be required. The name of input file has been set
 
 ### align_seqs_fasta.py
 
-align_seqs.py is a python script. This script aligns two DNA sequences and saves the best alignment along with its corresponding score in a single text file, and no external input should be required. The name of input file has been set
+align_seqs_fasta.py is a python script. This script aligns two DNA sequences and saves the best alignment along with its corresponding score in a single text file. The external input should be required, for example: align_seqs_fasta.py seq1.fasta seq2.fasta . The result will be stored to the results folder
+
+### align_seqs_better.py
+
+align_seqs_better.py is a python script. This script aligns two DNA sequences and saves the best alignment along with its corresponding score in a single text file. The external input should be required, for example: align_seqs_better.py seq1.fasta seq2.fasta . The result will be stored to the results folder. The align_seqs_better.py will output several best align ig their alignment score are the same
 
 ### oaks_debugme.py
 
