@@ -12,7 +12,7 @@ import csv
 import sys
 import doctest # import the doctest module
 
-# Define function
+
 def is_an_oak(name):
     """ Returns True if name is matching with 'quercus'. 
 
@@ -48,9 +48,9 @@ def main(argv):
     f = open('../data/TestOaksData.csv','r') # open a .csv file
     g = open('../results/JustOaksData.csv','w') # save a .csv file
     taxa = csv.reader(f) # return a _csv.reader object
-    next(taxa)
+    next(taxa) # exclude the header row
     csvwrite = csv.writer(g) # return a _csv.writer object
-    csvwrite.writerow(["Genus", "species"])
+    csvwrite.writerow(["Genus", "species"]) # include the column headers ("Genus", "species")
     oaks = set()
     for row in taxa:
         print(row)
@@ -58,7 +58,7 @@ def main(argv):
         print(row[0] + '\n')
         if is_an_oak(row[0]): # check if the name is matching with 'quercus'.
             print('FOUND AN OAK!\n')
-            csvwrite.writerow([row[0], row[1]])    
+            csvwrite.writerow([row[0], row[1]]) # write to the csv file   
 
     return 0
     

@@ -11,9 +11,9 @@
 # OUTPUT
 # The heights of the tree, same units as "distance"
 
-args<-commandArgs(TRUE)
-TreeData <- read.csv(args[1]) # load the trees.csv file
-InputFileName <- sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(args[1]))
+args<-commandArgs(TRUE) # take a csv file name from the command line
+TreeData <- read.csv(args[1]) # load the csv file
+InputFileName <- sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(args[1])) # get the input file name
 
 TreeHeight <- function(degrees, distance){
   radians <- degrees * pi / 180 # convert degrees to radians
