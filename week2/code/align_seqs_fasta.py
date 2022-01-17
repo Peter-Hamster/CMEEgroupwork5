@@ -102,7 +102,11 @@ def best_match(s1, s2, l1, l2):
 # input seq1 and seq2 into "set_length" function, which will return sequence lengths 
 # input sequence lengths into "best_match"function to return the best alignment ("my_best_align")
 def main(argv):
-    seq1, seq2 = read_fasta(sys.argv[1], sys.argv[2])
+    if (len(sys.argv) == 3):
+        seq1, seq2 = read_fasta(sys.argv[1], sys.argv[2])
+    else:
+        seq1, seq2 = read_fasta("407228412.fasta", "407228326.fasta")
+
     s1, s2, l1, l2= set_length(seq1,seq2)
     my_best_align, s1, my_best_score= best_match(s1, s2, l1, l2)
 
@@ -121,9 +125,5 @@ if (__name__ == "__main__"):
 
 # arguments
 ###########
-# 407228412 407228326
+# 407228412.fasta 407228326.fasta
 
-# to fix:
-#########
-# ask if output is okay, just printing best align and best score
-# cant get default argument to work for importing fasta file

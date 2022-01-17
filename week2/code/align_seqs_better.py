@@ -79,20 +79,20 @@ def best_match(s1, s2, l1, l2):
     """Find best match by comparing scores"""
     my_best_align = None
     my_best_score = -1
+    BestMatches = []
 
     for i in range(l1): # Note that you just take the last alignment with the highest score
         z = calculate_score(s1, s2, l1, l2, i) # run calculate_scores function, with i as starting point
-        if z >= my_best_score: # if the score calcuated is higher or equal to best current score
+        if z > my_best_score: # if the score calcuated is higher or equal to best current score
             my_best_align = "." * i + s2 # reassaign best alignment as that score (by adding .*i t the start of the seq)
             my_best_score = z # reasign best score to the score calculated
-            temp = open("../results/best_alignments.p", 'wb') # make temp .p file to store best alignment(s)
-            pickle.dump(my_best_align, temp) # add alignment to .p file
-            temp.close()
-        
-    
-    temp = open("../results/best_alignments.p", 'rb') # open p file with best alignment(s)
-    my_best_align = pickle.load(temp) # assaign best alignment(s) to my_best_align 
-    temp.close()
+            BestMatches.append(my_best_align)
+        elif z == my_best_score:
+            my_best_align2 = "." * i + s2 # reassaign best alignment as that score (by adding .*i t the start of the seq)
+            BestMatches.append(my_best_align2) # note: do not need to add best score aain, as it will be the same
+
+
+    my_best_align = BestMatches # assaign best alignment(s) to my_best_align 
     print("Best Alignment(s):")
     print(my_best_align)
     print(s1)
@@ -112,9 +112,13 @@ def main(argv):
     my_best_align, s1, my_best_score= best_match(s1, s2, l1, l2)
 
     f = open("../results/output.txt","w")
-    f.write(my_best_align+ "\n")
-    f.write(s1+ "\n")
-    f.write(str(my_best_score))
+    f.write("Best Score:")
+    f.write(str(my_best_score) + "\n")
+    f.write("\nBest alignment(s): \n")
+    for i in range(len(my_best_align)):
+        f.write("Alignment " + str(i + 1) + " -> \n")
+        f.write(str(my_best_align[i]) + "\n")
+        f.write(s1 + "\n" +"\n")
 
     f.close()
     
