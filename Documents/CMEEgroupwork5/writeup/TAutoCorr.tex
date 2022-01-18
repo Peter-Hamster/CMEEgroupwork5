@@ -18,7 +18,7 @@
   \maketitle
   
   \section{Results}
-    The correlation coefficient between successive years is calculated as 0.326. And this calculation is repeated 200 times, each time the time series of annual temperatures is randomly permuted, and the correlation coefficient is recalculated. The random correlation coefficients are continuously appended in a new vector. Then the fraction of the random correlation coefficient greater than 0.326 is considered as the approximate, asymptotic p-value. 
+    The correlation coefficient between successive years is calculated as 0.326. And this calculation is repeated 10000 times, each time the time series of annual temperatures is randomly permuted, and the correlation coefficient is recalculated. The random correlation coefficients are continuously appended in a new vector. Then the fraction of the random correlation coefficient greater than 0.326 is considered as the approximate, asymptotic p-value. 
     Thus, the p-value is calculated as zero.  
    
   \section{Discussion}
@@ -29,5 +29,13 @@
 
   \section{Conclusion}
     After applying a distribution of random correlation coefficients in temperatures between successive years, it can be concluded that temperatures of one year are significantly correlated with the successive years in Florida.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale = 0.3]{./Hist.png}
+  \caption{Histogram of Correlation Coefficients}
+  \label{figure1}
+\end{figure}
+Figure \ref{figure1} shows a histogram of correlation coefficients.
 
 \end{document}
