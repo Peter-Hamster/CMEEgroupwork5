@@ -114,8 +114,8 @@ def main(argv):
     my_best_align, s1, my_best_score= best_match(s1, s2, l1, l2)
 
     # Write results in .txt file
-    f = open("../results/output.txt","w")
-    f.write("Best Score:")
+    f = open("../results/output_better.txt","w")
+    f.write("Best Score: ")
     f.write(str(my_best_score) + "\n")
     f.write("\nBest alignment(s): \n")
     for i in range(len(my_best_align)):

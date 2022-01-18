@@ -110,10 +110,11 @@ def main(argv):
     s1, s2, l1, l2= set_length(seq1,seq2)
     my_best_align, s1, my_best_score= best_match(s1, s2, l1, l2)
 
-    f = open("../results/output.txt","w")
+    f = open("../results/output_fasta.txt","w")
+    f.write("Best Score: " + str(my_best_score))
+    f.write("\nBest alignment: \n")
     f.write(my_best_align+ "\n")
     f.write(s1+ "\n")
-    f.write(str(my_best_score))
 
     f.close()
    
