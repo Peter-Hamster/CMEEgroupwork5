@@ -6,8 +6,12 @@ This is the groupwork for the CMEE program from group 5. This project contains p
 ## Languages
 
 Python: 3.8.10
+
 R: 3.6.3
+
 Linux kernal: 5.11.0-27-generic
+
+LaTex: pdfTeX 3.14159265-2.6-1.40.20
 
 
 ## Dependencies
