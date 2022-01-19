@@ -6,9 +6,7 @@ This is the groupwork for the CMEE program from group 5. This project contains p
 ## Languages
 
 Python: 3.8.10
-
 R: 3.6.3
-
 Linux kernal: 5.11.0-27-generic
 
 
@@ -16,9 +14,9 @@ Linux kernal: 5.11.0-27-generic
 Python: sys, csv, doctest, pandas, numpy
 
 ## Author name and contact
-Author name: Peter (Guancheng) Zeng, Kate Griffin
+Author name: Peter (Guancheng) Zeng, Kate Griffin, Junyue Zhang
 
-Email: pz221@ic.ac.uk, kate.griffin21@imperial.ac.uk
+Email: pz221@ic.ac.uk, kate.griffin21@imperial.ac.uk, jz1621@ic.ac.uk
 
 # Project structure and Usage
 ## Biological Computing in Python I
