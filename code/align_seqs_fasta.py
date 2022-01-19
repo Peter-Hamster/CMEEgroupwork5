@@ -14,39 +14,35 @@ import sys
 
 def assign(fastafile1, fastafile2):
     """assign sequences and their lengths into variables to be returned"""
-    seq1 = []
-    seq2 = []
-    with open(fastafile1, 'r') as f: #opens the file to read
+    s1 = [] # create arrays for lines of DNA bases to go into
+    s2 = []
+    with open(fastafile1, 'r') as f: #opens the first file to read
         for line in f:
-            if not line.startswith(">"):
-                seq1.append(line)
+            if not line.startswith(">"): # makes sure all lines except first header line are copied
+                s1.append(line)
     
-    with open(fastafile2, 'r') as f: #opens the file to read
+    with open(fastafile2, 'r') as f: #opens the second file to read
         for line in f:
             if not line.startswith(">"):
-                seq2.append(line)
+                s2.append(line)
 
-    newseq1 = []
-    for x in seq1:
-        newseq1.append(x.replace("\n", ""))
+    news1 = [] # creates new array for modified sequence to go into
+    for x in s1: 
+        news1.append(x.replace("\n", "")) # removes all newline characters
 
-    newseq2 = []
-    for x in seq2:
-        newseq2.append(x.replace("\n", ""))
+    news2 = []
+    for x in s2:
+        news2.append(x.replace("\n", ""))
 
-    seq1 = ''.join(map(str, newseq1))
-    seq2 = ''.join(map(str, newseq2))
+    s1 = ''.join(map(str, news1)) # converts array of individual lines into one string of continuous DNA bases
+    s2 = ''.join(map(str, news2))
 
-    l1 = len(seq1)
-    l2 = len(seq2)
+    l1 = len(s1) # assigns length of sequences to variables
+    l2 = len(s2)
 
-    # Now alter to ensure that l1 is length of the longest, l2 that of the shortest
-    if l1 >= l2: # if l1 is larger than l2
-        s1 = seq1 # Assign the longer sequence s1, and the shorter to s2
-        s2 = seq2
-    else: # if l2 is larger than l1
-        s1 = seq2
-        s2 = seq1
+    # Now alter to ensure that s1 & l1 represent the longest sequence
+    if l1 < l2: # if l1 is less than l2, swap them around
+        s1, s2 = s2, s1 # swap the two seqs
         l1, l2 = l2, l1 # swap the two lengths
 
     return s1, s2, l1, l2
@@ -54,20 +50,21 @@ def assign(fastafile1, fastafile2):
 def calculate_score(s1, s2, l1, l2, startpoint):
     """computes a score for one specific alignment of two sequences, based on a specific startpoint of the shorter sequence
     by returning the number of matches starting from an abitrary startpoint chosen by the user"""
+    
     matched = "" # to hold string displaying alignements
-    score = 0
+    score = 0 # starts with zero alignments
     for i in range(l2): # l2 is the shorter length
         if (i + startpoint) < l1: # if the startpoint is small enough that the bases still overlap
-            if s1[i + startpoint] == s2[i]: # if the base in the same position in seq1 and seq1 match,
-                matched = matched + "*" # add a * to the matched variable to indicate a match
-                score = score + 1 # add to score to indicate a match
+            if s1[i + startpoint] == s2[i]: # if the base in the same position in s1 and s1 match,
+                matched += "*" # add a * to the matched variable to indicate a match
+                score += 1 # increment score to record the match
             else:
-                matched = matched + "-" # add a - to the matched variable to indicate no match
+                matched += "-" # add a - to the matched variable to indicate no match
 
     # some formatted output
     # print("." * startpoint + matched) # print full stops up until where the startpoint was, then print the matched variable
     # # which contains the pattern of which bases are matching vs not matching           
-    # print("." * startpoint + s2) # display the correspondin alignment of seq2 (the shorter sequence)
+    # print("." * startpoint + s2) # display the correspondin alignment of s2 (the shorter sequence)
     # print(s1) # display the longer sequence underneath
     # print("Score:", score) 
     # print(" ")
