@@ -50,6 +50,6 @@ run_get_TreeHeight.sh is a shell script that use to execute the get_TreeHeight.p
 
 TAutoCorr.R is an R script which is used to find out if there is an autocorrelation in Florida weather
 
-### FloridaLaTeX.tex
+### TAutoCorr.tex
 
-FloridaLaTeX.tex is a LaTeX file, which is the report of the result from TAutoCorr.R
+TAutoCorr.tex is a LaTeX file, which is the report of the result from TAutoCorr.R
