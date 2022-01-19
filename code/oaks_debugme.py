@@ -3,7 +3,7 @@
 """ This script can modify doctests appropriately and the script such that it can handle cases where there is a typo (such as ‘Quercuss’) or there is a genus name that is not strictly ‘Quercus’. """
 
 __appname__ = '[application name here]'
-__author__ = 'Junyue (jz1621@ic.ac.uk)'
+__author__ = 'Junyue Zhang (jz1621@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Peter Zeng (pz221@ic.ac.uk), Kayleigh ()'  '
 __version__ = '0.0.1'
 __license__ = "License for this code/program"
 
