@@ -14,9 +14,9 @@ Linux kernal: 5.11.0-27-generic
 Python: sys, csv, doctest, pandas, numpy
 
 ## Author name and contact
-Author name: Peter (Guancheng) Zeng
+Author name: Peter (Guancheng) Zeng, Kate Griffin
 
-Email: pz221@ic.ac.uk
+Email: pz221@ic.ac.uk, kate.griffin21@imperial.ac.uk
 
 # Project structure and Usage
 ## Biological Computing in Python I
