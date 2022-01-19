@@ -33,9 +33,9 @@ align_seqs_fasta.py is a python script. This script aligns two DNA sequences and
 
 align_seqs_better.py is a python script. This script aligns two DNA sequences and saves the best alignment along with its corresponding score in a single text file. The external input should be required, for example: align_seqs_better.py seq1.fasta seq2.fasta . The result will be stored to the results folder. The align_seqs_better.py will output several best align ig their alignment score are the same
 
-### oaks_debugme.py
+### grp_oaks_debugme.py
 
-oaks_debugme.py is a python script. The script carefully compare the looping and the list comprehension way for the two tasks, which are to find oak tree species names and get names in upper case. This script used to have bugs, but they have been debugged
+grp_oaks_debugme.py is a python script. The script carefully compare the looping and the list comprehension way for the two tasks, which are to find oak tree species names and get names in upper case. This script used to have bugs, but they have been debugged
 
 ## Biological Computing in R
 ### get_TreeHeight.py
