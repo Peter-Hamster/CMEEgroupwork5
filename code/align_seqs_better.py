@@ -2,7 +2,7 @@
 """align two DNA sequences such that they are as similar as possible
 """
 __appname__ = 'align_seqs_fasta.py' 
-__author__ = 'Kayleigh Greenwood (kayleigh.greenwood21@imperial.ac.uk)'
+__author__ = 'Junyue Zhang (jz1621@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Peter Zeng (pz221@imperial.ac.uk), Kayleigh Greenwood (kayleigh.greenwood21@imperial.ac.uk)'
 __version__ = '0.0.1'
 
 ### IMPORTS ###
