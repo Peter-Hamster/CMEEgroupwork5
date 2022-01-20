@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 """align_seqs_better.py is a python script. This script aligns two DNA sequences and saves the best alignment 
 along with its corresponding score in a single text file"""
 
@@ -108,6 +109,8 @@ def main(argv):
 
 ### 
 =======
+=======
+>>>>>>> Peter_Zeng
 #!/usr/bin/env python3
 """align two DNA sequences such that they are as similar as possible
 """
@@ -218,12 +221,18 @@ def main(argv):
         print("Running script with default values.")
         run_alignment("../data/407228326.fasta", "../data/407228412.fasta")
 
+<<<<<<< HEAD
 >>>>>>> 018a50b17243a8b2c0adeea902645bafee4e208c
+=======
+>>>>>>> Peter_Zeng
 if __name__ == "__main__": 
     """Makes sure the "main" function is called from command line"""  
     status = main(sys.argv)
     sys.exit(status)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 018a50b17243a8b2c0adeea902645bafee4e208c
+=======
+>>>>>>> Peter_Zeng

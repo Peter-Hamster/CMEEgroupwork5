@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 """align_seqs_fasta.py is a python script. This script aligns two DNA sequences and saves the best alignment 
 along with its corresponding score in a single text file"""
 
@@ -103,6 +104,8 @@ if __name__ == "__main__":
     status = main(sys.argv)
     sys.exit(status)
 =======
+=======
+>>>>>>> Peter_Zeng
 #!/usr/bin/env python3
 """align two DNA sequences such that they are as similar as possible
 """
@@ -210,4 +213,7 @@ if __name__ == "__main__":
     status = main(sys.argv)
     sys.exit(status)
 
+<<<<<<< HEAD
 >>>>>>> 018a50b17243a8b2c0adeea902645bafee4e208c
+=======
+>>>>>>> Peter_Zeng

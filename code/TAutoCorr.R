@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 rm(list = ls())
 
 ### Load the RData file ###
@@ -36,6 +37,8 @@ correlationCoffBoolean <- correlationCoffVector[correlationCoffVector>correlatio
 fractionCorrCoff <- length(correlationCoffBoolean) / 10000
 print (fractionCorrCoff)
 =======
+=======
+>>>>>>> Peter_Zeng
 rm(list=ls())
 
 load("../data/KeyWestAnnualMeanTemperature.RData")
@@ -118,4 +121,7 @@ text(0.35,40,"Observed correlation", col = "black", cex=1.5, srt = 90)
 # reference video (good explanation of permutation tests in R)
 # https://youtu.be/xRzEWLfEEIA
 
+<<<<<<< HEAD
 >>>>>>> 018a50b17243a8b2c0adeea902645bafee4e208c
+=======
+>>>>>>> Peter_Zeng
