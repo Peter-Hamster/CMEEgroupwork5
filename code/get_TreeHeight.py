@@ -1,6 +1,7 @@
 """get_TreeHeight is a python script that calculates tree heights"""
 
-__appname__ = 'get_TreeHeight.py'
+__appname__ = 'get_TreeHeight.py' 
+__author__ = 'Peter (Guancheng) Zeng (pz221@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Junyue Zhang (jz1621@ic.ac.uk), Kayleigh Greenwood (Kayleigh.Greenwood21@ic.ac.uk)'
 __version__ = '0.0.1'
 
 
