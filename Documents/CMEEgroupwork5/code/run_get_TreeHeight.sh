@@ -1,4 +1,4 @@
-##!/bin/bash
+#! /bin/sh
+python3 get_TreeHeight.py trees
 
-Rscript get_TreeHeight.R ../data/trees.csv
-ipython3 get_TreeHeight.py ../data/trees.csv
+Rscript get_TreeHeight.R trees

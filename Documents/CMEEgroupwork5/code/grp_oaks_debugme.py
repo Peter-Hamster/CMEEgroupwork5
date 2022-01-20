@@ -2,10 +2,10 @@
 
 """ This script can modify doctests appropriately and the script such that it can handle cases where there is a typo (such as ‘Quercuss’) or there is a genus name that is not strictly ‘Quercus’. """
 
-__appname__ = '[application name here]'
-__author__ = 'Junyue (jz1621@ic.ac.uk)'
+__appname__ = 'grp_oaks_debugme.py'
+__author__ = 'Junyue Zhang (jz1621@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Peter Zeng (pz221@ic.ac.uk), Kayleigh Greenwood (Kayleigh.Greenwood21@ic.ac.uk)'
 __version__ = '0.0.1'
-__license__ = "License for this code/program"
+
 
 
 import csv
@@ -43,7 +43,7 @@ def is_an_oak(name):
     
 
 def main(argv):
-    """ Main entry point of the program. """ 
+    """ Exclude the header row and include the column headers. """ 
 
     f = open('../data/TestOaksData.csv','r') # open a .csv file
     g = open('../results/JustOaksData.csv','w') # save a .csv file
