@@ -18,9 +18,9 @@ LaTex: pdfTeX 3.14159265-2.6-1.40.20
 Python: sys, csv, doctest, pandas, numpy
 
 ## Author name and contact
-Author name: Peter (Guancheng) Zeng, Kate Griffin, Junyue Zhang
+Author name: Peter (Guancheng) Zeng, Kate Griffin, Junyue Zhang, Kayleigh Greenwood
 
-Email: pz221@ic.ac.uk, kate.griffin21@imperial.ac.uk, jz1621@ic.ac.uk
+Email: pz221@ic.ac.uk, kate.griffin21@imperial.ac.uk, jz1621@ic.ac.uk, Kayleigh.Greenwood21@ic.ac.uk
 
 # Project structure and Usage
 ## Biological Computing in Python I
