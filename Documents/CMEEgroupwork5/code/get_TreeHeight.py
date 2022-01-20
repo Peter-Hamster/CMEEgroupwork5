@@ -1,36 +1,20 @@
-#!/usr/bin/env python3
+"""get_TreeHeight is a python script that calculates tree heights"""
 
-""" This script can  """
-
-__appname__ = '[application name here]'
-__author__ = 'Junyue (jz1621@ic.ac.uk)'
+__appname__ = 'get_TreeHeight.py' 
+__author__ = 'Peter (Guancheng) Zeng (pz221@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Junyue Zhang (jz1621@ic.ac.uk), Kayleigh Greenwood (Kayleigh.Greenwood21@ic.ac.uk)'
 __version__ = '0.0.1'
-__license__ = "License for this code/program"
 
+
+### import ###
 import sys
-import os
-import math
-import pandas as pd
+import pandas
+import numpy
 
-TreeData = pd.read_csv(sys.argv[1]) # open a .csv file
-## obtain the input file name without extension and relative path
-InputFileName = os.path.basename(sys.argv[1]).split('.')[0]
+treeData = pandas.read_csv("../data/" + sys.argv[1] + ".csv")
 
-def TreeHeight(degrees, distance):
-    radians = degrees * math.pi / 180 # convert degrees to radians
-    height = distance * math.tan(radians) # calculate the tree height using the trigonometric formula
-    print("Tree height is:" + " " + str(height)) # print tree height
-    return (height)
+### to calculate the height for every rows ###
+for row in treeData:
+    treeData["Tree.Height.m"] = treeData["Distance.m"] * numpy.tan(treeData["Angle.degrees"] * numpy.pi/180)
 
-height = [] # initialize a new vector
-TreeLength = len(TreeData["Species"]) # obtain the number of species
-
-for i in range(TreeLength):
-    z = TreeHeight(TreeData["Angle.degrees"][i], TreeData["Distance.m"][i]) # call the function TreeHeight and input the corresponding degrees and distances 
-    height.append(z) # append the tree height
-
-TreeData["Tree.Height.m"] = height # add a new column to the original data frame
-TreeData.to_csv("../results/" + InputFileName + "_treeheightsP.csv") # create a csv output file
-
-
-
+### output the data to the tree data csv
+treeData.to_csv("../results/" + sys.argv[1] + "_TreeHts_py.csv", sep= ',',index=False)
