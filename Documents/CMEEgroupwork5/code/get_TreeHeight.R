@@ -35,3 +35,4 @@ treeData$Tree.Height.m <- Tree.Height.m
 
 ### Output the result to the csv file ###
 write.csv(treeData, paste("../results/",args,"_TreeHts_R.csv",sep = ""),row.names = F)
+

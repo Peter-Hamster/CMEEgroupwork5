@@ -26,7 +26,7 @@ def extract(fastafile1, fastafile2):
         next(file) 
         seq2 = file.read()
         temp.append(seq2)
-        seq2 = temp[1].replace("\n", "") 
+        seq2 = temp[1].replace("\n", "")
 
     ## assigns length of sequences to variables ##
     len1 = len(seq1) 
@@ -70,16 +70,24 @@ def run_alignment(fastafile1, fastafile2):
     ## find best alignment ##
     for startpoint in range(len1): ## loops through what will be the various starting points / alignments to check ##
         new_score = calculate_score(seq1, seq2, len1, len2, startpoint)
-        if new_score > best_score:
-            best_align = "." * startpoint + seq2 ## update the pattern for best_align every time a new highest score is reached ##
-            best_score = new_score ## updates with highest score ##
-    
+        if new_score > best_score: ## if a higher score is found, replace previous ##
+            best_align = ["." * startpoint + seq2]  ## update the pattern for best_align every time a new highest score is reached ##
+            best_score = new_score 
+        elif new_score == best_score: 
+            best_align.append("." * startpoint + seq2) ## if alignments are found with the same score, append the pattern ##
+        
     ## write results into file ##
-    f = open('../results/align_seqs_fasta_results.txt', 'w')
-    f.write(f"Best alignment score: {best_score} \n")
-    f.write(f"\nBest alignment: \n{best_align} \n{seq1}")
+    f = open('../results/align_seqs_better_results.txt', 'w')
+    f.write(f"\nBest alignment score: {best_score} \n")
+    f.write(f"\nBest alignment/s: \n")
+
+    for i in range(len(best_align)):
+        f.write(f" \n{best_align[i]} \n{seq1}\n")
+
+    f.write("\n")
     f.close()
-    print("Results saved into ../results/align_seqs_fasta_results.txt")
+
+    print("Results saved into ../results/align_seqs_better_results.txt")
 
 ### ENTRY POINT ###
 def main(argv):
@@ -101,6 +109,6 @@ def main(argv):
         run_alignment("../data/407228326.fasta", "../data/407228412.fasta")
 
 if __name__ == "__main__": 
-    """Makes sure the main function is called from command line"""  
+    """Makes sure the "main" function is called from command line"""  
     status = main(sys.argv)
     sys.exit(status)
