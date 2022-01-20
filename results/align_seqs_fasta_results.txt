@@ -1,5 +1,0 @@
-Best alignment score: 3 
-
-Best alignment: 
-AAA 
-AAATTTAAA
