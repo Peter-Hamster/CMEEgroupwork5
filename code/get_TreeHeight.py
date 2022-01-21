@@ -1,74 +1,20 @@
-#!/usr/bin/env python3
+"""get_TreeHeight is a python script that calculates tree heights"""
 
-"""Calculates heights of trees given distance of farthest treetop 
-"""
-
-__author__ = 'Kayleigh Greenwood (kayleigh.greenwood21@imperial.ac.uk)'
+__appname__ = 'get_TreeHeight.py' 
+__author__ = 'Peter (Guancheng) Zeng (pz221@ic.ac.uk), Kate Griffin (kate.griffin21@imperial.ac.uk), Junyue Zhang (jz1621@ic.ac.uk), Kayleigh Greenwood (Kayleigh.Greenwood21@ic.ac.uk)'
 __version__ = '0.0.1'
 
-## Imports ##
-import csv
+
+### import ###
 import sys
-import pandas as pd
-from pathlib import Path
-import os 
-import math
+import pandas
+import numpy
 
-## Functions ##
+treeData = pandas.read_csv("../data/" + sys.argv[1] + ".csv")
 
-def TreeHeight(degrees, distance):
-    # stores function inside variable TreeHeight
+### to calculate the height for every rows ###
+for row in treeData:
+    treeData["Tree.Height.m"] = treeData["Distance.m"] * numpy.tan(treeData["Angle.degrees"] * numpy.pi/180)
 
-    radians = degrees * math.pi / 180 
-    # converts degrees to radians
-    height = distance * math.tan(radians) 
-    # uses trig to calculate height
-
-    return height
-    # returns the value of height, making it available outside of the function
-
-## Code ##
- 
-
-def main(argv):
-    """Main entry point of the program"""
-
-    # imports data frame to read and puts it into TreeData variable
-    TreeData = pd.read_csv(argv[1])
-    # TreeData = pd.read_csv("../data/trees.csv")
-
-    # creates a new column for data frame in TreeData named Tree.Height.m   
-    TreeData["Tree.Height.m"] = 0.0 
-    # set to 0.0 instead of "" so that column would default to float
-    # could set as "" and use pd.to_numeric(TreeData["Tree.Height.m"]) to change to float 
-
-    # for loop that calculates tree height for each data entry and adds it to Tree.Height.m column
-    print(len(TreeData))
-    for i in range(len(TreeData)):
-        # for each row(and therefore data point) in treedata
-        
-        TreeHeightValue = TreeHeight(TreeData.iloc[i]["Angle.degrees"], TreeData.iloc[i]["Distance.m"]) 
-        # create a new variable and store the output of the tree height function into it
-        # use indexing to calculate Tree Height for that row
-
-        TreeData.at[i, "Tree.Height.m"] = TreeHeightValue
-        # store result in the Tree.height.m column of each row
-
-    filebase = os.path.splitext(os.path.basename(argv[1]))[0]
-    # .splitect removes file extension and .basename removes path
-
-    filename = "../results/" + filebase + "_treeheights.csv"
-    # creates name of new file that results will be written to
-    
-    TreeData.to_csv(filename, index=False)
-    # writes the contents of TreeData into a file in results, without the rows being numbered.
-    
-    print("Results saved to", filename)
-    # end
-
-
-
-if __name__ == "__main__": 
-    """Makes sure the "main" function is called from command line"""  
-    status = main(sys.argv)
-    sys.exit(status)
+### output the data to the tree data csv
+treeData.to_csv("../results/" + sys.argv[1] + "_TreeHts_py.csv", sep= ',',index=False)

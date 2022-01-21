@@ -1,37 +1,81 @@
-# Question: Are temperatures of one year significantly correlated with the next year (successive years), across years in a given location?
-# Method: calculate the correlation between (n-1) pairs of years, where n is the total number of years. 
-# Tips: you can’t use the standard p-value calculated for a correlation coefficient, because measurements of climatic variables in successive time-points in a time series (successive seconds, minutes, hours, months, years, etc.) are not independent.
-
-# Step 0: Load and examine the annual temperature dataset from Key West in Florida, USA for the 20th century:
 rm(list=ls())
 
 load("../data/KeyWestAnnualMeanTemperature.RData")
 
-ls()
+# head(ats)
 
-# Step 0.5: create new column of temp year after
-ats$NextTemp = c(tail(ats$Temp, -1), NA)
+# plot(ats)
 
-# Step 1: Compute the appropriate correlation coefficient between successive years and store it (look at the help file for cor()
-corcoeff <- cor(ats$Temp[1:99], ats$NextTemp[1:99], method = "kendall")
-print("Correlation coefficient between Temperature and Temperature the following year is:")
-print(corcoeff)
+#reassign Year as a character 
+as.character(ats$Year)
 
-# Step 2: Repeat this calculation a sufficient number of times by – randomly permuting the time series, and then recalculating the correlation coefficient for each randomly permuted sequence of annual temperatures and storing it
+# Make a new column and fill with NA values
+ats$s_temp <- NA
 
-allcoeffs = c()
-for (i in 1:1000){ # shuffles and calculates 1000 times
-    newcoeff <- cor(ats$Temp[1:99], sample(ats$NextTemp[1:99]), method = "kendall") # calculates correlation coefficient of years and shuffled temperatures
-    allcoeffs = c(allcoeffs, newcoeff) # stores all coefficients in a vector
+# Fill s_temp column with the temperature value of the successive year 
+for (i in 1:nrow(ats)){
+  ats$s_temp[i] <- ats$Temp[i+1]
 }
-# Step 3: Then calculate what fraction of the correlation coefficients from the previous step were greater than that from step 1 (this is your approximate p-value).
+# remove last row to remove the NA value (as last year of data set does not have a value for the successive year)
+ats <- ats[-100,]
 
-above <- allcoeffs[allcoeffs>corcoeff]
-pval <- above/allcoeffs
-print("P value:")
-print(pval)
-# Step 4: Interpret and present the results Present your results and their interpretation in a pdf document written in latex (submit the the document’s source code as well).
+# Calculate the Pearson's coefficient
+coeff <- cor(x= ats$Temp, y=ats$s_temp, method = "pearson")
 
-pdf("../results/TAutoCorrhist.pdf")
-hist(allcoeffs, main = "Permutation Analysis", xlab = "Correlation Coefficient")
-dev.off()
+#set seed for reproducible results
+set.seed(2349)
+
+# no. of observations in ats dataset 
+n <- length(ats$Temp)
+
+# No. of permutation samples 
+P <- 1000
+
+# Initialise an empty matrix to store permutation data
+PermSamp <- matrix(0, nrow=n, ncol=P)
+
+# Make permutation samples using  loop
+# Makes 1000 (1:P) permutations of the data and store each one 
+# replace= FALSE: sampling without replacement allows for a reordering (permutation) of the data
+
+for (i in 1:P){ # Each loop is a permutation 
+  PermSamp[,i] <- sample(ats$s_temp, size=n, replace=FALSE) # for each column [,i], resample (reorders) the s_temp values. The number of rows is equal to n (the number of variables in the original dataset)
+  
+}
+
+# make an empty vector  to store coefficients
+Perm.test.stat <-  rep(0, P)
+
+# Loop through and calculate the test statistics 
+# calculates correlation between permutated temp values and s_temp..
+for (i in 1:P){
+  Perm.test.stat[i]<-cor(x= ats$Temp, y= PermSamp[,i], method= "pearson") #for each column, 
+}
+# x = ats$Temp: this calculates the coefficient between Temp (in its original order in ats dataset) with each permutation (i.e. each randomly shuffled column of s_temp values)
+# each coeff calculated from the step above is populated into an empty matrix 
+
+# calculate fraction of permuted coefficients were greater than the observed coefficicent (coeff)
+# sum function will count the number of "TRUE" values (where the coeff calculated for permutation test is greater than coeff (observed correlation coefficient)
+perm_coeff <- sum(Perm.test.stat > coeff)
+
+# Calculate what fraction of the random correlation coefficients were greater than the observed one (i.e. p-value)
+pvalue <- perm_coeff/P
+
+# Graph distribution of permutated coefficients 
+hist(Perm.test.stat, 
+     breaks = 50,
+     main= "Distribution of permuted coefficients", 
+     xlab = "Correlation coefficient", #between temp and years
+     ylab="frequency",
+     xlim = c(-0.4,0.4),
+     ylim = c(0, 50),
+     col="pink2")
+abline(v=0.3262, col="blue", lwd=2)
+text(0.35,40,"Observed correlation", col = "black", cex=1.5, srt = 90)
+
+#Interpret and present the results: Present your results and their interpretation in a pdf document written in latex (include the the document’s source code in the submission) (Keep the writeup, including any figures, to one A4 page).
+
+
+
+# reference video (good explanation of permutation tests in R)
+# https://youtu.be/xRzEWLfEEIA

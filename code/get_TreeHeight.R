@@ -1,54 +1,38 @@
-args <- commandArgs(trailingOnly=TRUE)
+#This function calculates heights of trees given distance of each tree
+#from its base and angle to its top, using the trigonometric formula
 
-library("tools")
-## INTRO ##
-# This function calculates heights of trees given distance of farthest treetop 
-# from its base and angle to its top, using  the trigonometric formula 
-# height = distance * tan(angle in radians)
-# requires tidyverse to be imported
+#height = distance * tan(radians)
 
-## ARGUMENTS ##
-# degrees:   The angle of elevation of tree
-# distance:  The distance from base of tree to farthest treetop branch(e.g., meters)
+#ARGUMENTS
+#degrees: The angle of elevation of tree
+#distance: The distance from base of tree (e.g., meters)
 
-## OUTPUT ##
-# The heights of the tree, same units as "distance"
+#OUTPUT
+#The heights of the tree, same units as "distance"
 
-## FUNCTION ##
+rm(list = ls())
 
-# Define function
-TreeHeight<- function(degrees, distance){ 
-    # stores function inside variable TreeHeight
-    radians <- degrees * pi / 180 
-    # converts degrees to radians
-    height <- distance * tan(radians) 
-    # uses trig to calculate height
-  
-    return (height) 
-    # returns the value of height, making it available outside of the function
+args<-commandArgs(TRUE)
+
+### Read the csv file ###
+treeData<- read.csv(paste0("../data/",args, ".csv"), stringsAsFactors = F)
+
+TreeHeight <- function(degrees, distance){
+  radians <- degrees * pi / 180
+  height <- distance * tan(radians)
+  return (height)
 }
 
-## CODE ##
-TreeData <- read.csv(args[1])
-# imports data frame to read and puts it into TreeData variable
 
-TreeData$Tree.Height.m <- NA 
-# creates a new column for data frame in TreeData named Tree.Height.m
+Tree.Height.m <- c()
 
-# for loop that calculates tree height for each data entry and adds it to Tree.Height.m column
-for(i in 1:nrow(TreeData)) { 
-    # for each row(and therefore data point) in treedata
-    TreeHeightValue=TreeHeight(TreeData[i,3], TreeData[i,2]) 
-    # create a new variable and store the output of the tree height function into it
-    # use indexing to calculate Tree Height for that row
+### Calculate the tree height ###
+for (i in 1:nrow(treeData)){
+  Tree.Height.m <- append(Tree.Height.m,TreeHeight(treeData$Angle.degrees[i],treeData$Distance.m[i]))
+}
 
-    TreeData[i,4] <- TreeHeightValue 
-    # store result in the Tree.height.m column of each row
-} 
-filebase = file_path_sans_ext(basename(args[1]))
-filename = paste("../results/", filebase, "_treeheights.csv", sep="")
-write.csv(TreeData, filename, row.names=FALSE)  
-# writes the contents of TreeData into a file in results, without the rows being numbered.
+treeData$Tree.Height.m <- Tree.Height.m
 
-print(paste("Results saved to", filename))
-# end
+### Output the result to the csv file ###
+write.csv(treeData, paste("../results/",args,"_TreeHts_R.csv",sep = ""),row.names = F)
+

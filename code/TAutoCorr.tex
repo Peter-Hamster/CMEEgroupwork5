@@ -1,34 +1,31 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{a4wide}
 \usepackage{float}
-\usepackage[a4paper,
-            left=1in,
-            right=1in,
-            top=0.5in,
-            bottom=1in,]{geometry}
+\addtolength{\topmargin}{-1in}
+\pagenumbering{gobble}
 
-
-
-\title{Autocorrelation in Florida Weather}
-\author{Kayleigh Greenwood}
-\date{November 2021}
+\title{Are temperatures of one year significantly correlated with the next year (successive years), across years in a given location?}
+\author{Kate Griffin, Peter Zeng, Junyue Zhang, Kayleigh Greenwood}
+\date{December 2021}
 
 \begin{document}
-
-\maketitle
-
-\section{Results}
-The Kendall rank correlation coefficient was used to determine whether there was a positive correlation between Temperature in Key West, Florida, and the Temperature the following year. The correlation coefficient of the Temperature data throughout the years in the 20th century was 0.238342, and a permutation analysis (Figure 1) of 1000 shuffled populations was used to determine the approximate, asymptotic, one-tailed P-value of 0.
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{../results/TAutoCorrhist.pdf}
-\caption{Histogram of Coefficients}
-\end{figure}
-
-\section{Discussion}
- Given that the P-value was below 0.05, we can reject the null hypothesis that Temperature in Key West, Florida are not significantly correlated with the next year, and determine that there is a statistically significant positive correlation between the two variables. The positive correlation indicated between Temperature in Key West and Temperature the successive year is statistically significant.
-These results suggest that throughout the 20th century, temperature was increasing over time in Key West.
-
+	
+	\maketitle
+	
+	\section{Introduction}
+	A permutation analysis was conducted to investigate whether the temperatures of one year significantly correlated with the next year (successive years) in Florida. Correlation was calculated using data from the annual temperature dataset from Key West in Florida, USA for the 20th century. 
+	
+	\section{Methods}
+	The Pearson's correlation coefficient between the temperature of each year and its successive year was calculated. The temperature values of the successive year was re-sampled to make 1000 permuted samples. The correlation coefficient was calculated between the temperature of that year and permuted temperature values. The fraction of permuted coefficients which were greater than the observed coefficient value was calculated (i.e. the asymptotic p-value). The distribution of permuted samples were visualised on a histogram, with a vertical line representing the observed correlation coefficient. 
+	
+	\section{Results} 
+	There was a significant correlation between temperature and year (p-value=0.001). 
+	\begin{figure}[H]
+		\includegraphics[width= 50 mm, scale=0.31]{../data/TAutoCorr_hist.pdf}
+		\caption{The distribution of correlation coefficients of permuted samples. The blue line represents the observed correlation coefficient}
+		\label{The distribution of correlation coefficients of permuted samples. The blue line represents the observed correlation coefficient}
+	\end{figure}
+	
 \end{document}
